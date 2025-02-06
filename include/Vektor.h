@@ -1,4 +1,6 @@
 #pragma once
+#include <cassert>
+
 class Vektor {
 private:
 	int* m_arr;
@@ -18,6 +20,10 @@ public:
 	// Modifiers
 	unsigned push_back(int val);
 	int pop_back();
+	void clear();
+
+	// Operators
+	int operator[](int index);
 
 };
 
