@@ -11,11 +11,13 @@ public:
 	// Constructors/Destructors
 	Vektor();
 	Vektor(unsigned size);
+	Vektor(unsigned size, unsigned defaultValue);
 
 	// Helper functions
 	unsigned size();
 	unsigned capacity();
 	unsigned empty();
+	void print(char delimitter);
 
 	// Modifiers
 	unsigned push_back(int val);
@@ -23,7 +25,7 @@ public:
 	void clear();
 
 	// Operators
-	int operator[](int index);
-
+	int operator[](unsigned index);
+	
 };
 

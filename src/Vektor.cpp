@@ -1,5 +1,5 @@
 #include "../include/Vektor.h"
-
+#include <iostream>
 Vektor::Vektor() : m_arr{ nullptr }, m_size( 0 ), m_capacity( 10 ) {
 
 }
@@ -7,6 +7,12 @@ Vektor::Vektor() : m_arr{ nullptr }, m_size( 0 ), m_capacity( 10 ) {
 Vektor::Vektor(unsigned size) : m_size( size ), m_capacity( size * 2 ) {
 	assert(size >= 0);
 	m_arr = new int[m_capacity];
+}
+
+Vektor::Vektor(unsigned size, unsigned defaultValue) : m_size(size), m_capacity(size * 2) {
+	assert(size >= 0);
+	m_arr = new int[m_capacity];
+	memset(m_arr, defaultValue, m_size * sizeof(unsigned));
 }
 
 unsigned Vektor::size() {
@@ -21,10 +27,18 @@ unsigned Vektor::empty() {
 	return m_size == 0;
 }
 
+void Vektor::print(char delimitter = ' ') {
+	for (unsigned i = 0; i < m_size; ++i) {
+		std::cout << m_arr[i];
+		if (i != m_size - 1)  std::cout << delimitter;
+	}
+	std::cout << std::endl;
+}
+
 unsigned Vektor::push_back(int val) {
 	if (m_size == m_capacity) {
 		int* newArr = new int[(m_size + 5) * 2];
-		for (int i = 0; i < m_capacity; ++i) 
+		for (unsigned i = 0; i < m_capacity; ++i) 
 			newArr[i] = m_arr[i];
 		m_capacity *= 2;
 		delete[] m_arr;
@@ -37,18 +51,21 @@ unsigned Vektor::push_back(int val) {
 
 int Vektor::pop_back() {
 	assert(m_size > 0);
-	m_size--;
+	return m_size--;
+	
 }
 
 void Vektor::clear() {
 	m_size = 0;
 }
 
-int Vektor::operator[](int index) {
+int Vektor::operator[](unsigned index) {
 	assert(index < m_size);
 	assert(index >= 0);
 	return m_arr[index];
 }
+
+
 
 
 
