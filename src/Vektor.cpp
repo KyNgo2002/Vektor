@@ -8,6 +8,8 @@ Vektor::Vektor() : m_arr{ nullptr }, m_size( 0 ), m_capacity( 10 ) {
 
 Vektor::Vektor(unsigned size) : m_size( size ), m_capacity( size * 2 ) {
 	assert(size >= 0);
+	if (size == 0)
+		m_capacity = 10;
 	m_arr = new int[m_capacity];
 }
 
@@ -76,9 +78,7 @@ void Vektor::reserve(unsigned capacity) {
 	}
 }
 
-void Vektor::sort() {
-
-}
+// 
 
 int Vektor::operator[](unsigned index) {
 	assert(index < m_size);
