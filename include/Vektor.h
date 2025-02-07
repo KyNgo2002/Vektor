@@ -10,8 +10,8 @@ private:
 public:
 	// Constructors/Destructors
 	Vektor();
-	Vektor(unsigned size);
-	Vektor(unsigned size, unsigned defaultValue);
+	Vektor(int size);
+	Vektor(int size, int defaultValue);
 	~Vektor();
 
 	// Helper functions

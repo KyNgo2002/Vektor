@@ -1,26 +1,34 @@
 #include "../include/Vektor.h"
 #include <iostream>
 
-
-Vektor::Vektor() : m_arr{ nullptr }, m_size( 0 ), m_capacity( 10 ) {
-
+Vektor::Vektor() : m_arr( nullptr ), m_size( 0 ), m_capacity( 10 ) {
+	
 }
 
-Vektor::Vektor(unsigned size) : m_size( size ), m_capacity( size * 2 ) {
+Vektor::Vektor(int size) {
 	assert(size >= 0);
-	if (size == 0)
+	m_size = size;
+	if (size <= 0) {
+		m_size = 0;
 		m_capacity = 10;
+	}
+	else
+		m_capacity = m_size * 2;
+
 	m_arr = new int[m_capacity];
+	memset(m_arr, 0, m_capacity * sizeof(int));
 }
 
-Vektor::Vektor(unsigned size, unsigned defaultValue) : m_size(size), m_capacity(size * 2) {
+Vektor::Vektor(int size, int defaultValue) : m_size(size), m_capacity(size * 2) {
 	assert(size >= 0);
 	m_arr = new int[m_capacity];
-	memset(m_arr, defaultValue, m_size * sizeof(unsigned));
+	for (unsigned i = 0; i < m_size; ++i)
+		m_arr[i] = defaultValue;
 }
 
 Vektor::~Vektor() {
-	delete[] m_arr;
+	if (m_arr)
+		delete[] m_arr;
 	m_arr = nullptr;
 }
 
@@ -71,14 +79,12 @@ void Vektor::clear() {
 void Vektor::reserve(unsigned capacity) {
 	if (capacity > m_capacity) {
 		int* newArr = new int[capacity];
-		for (int i = 0; i < m_size; ++i)
+		for (unsigned i = 0; i < m_size; ++i)
 			newArr[i] = m_arr[i];
 		delete[] m_arr;
 		m_arr = newArr;
 	}
 }
-
-// 
 
 int Vektor::operator[](unsigned index) {
 	assert(index < m_size);
