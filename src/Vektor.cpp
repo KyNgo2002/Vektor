@@ -1,5 +1,7 @@
 #include "../include/Vektor.h"
 #include <iostream>
+
+
 Vektor::Vektor() : m_arr{ nullptr }, m_size( 0 ), m_capacity( 10 ) {
 
 }
@@ -74,6 +76,10 @@ void Vektor::reserve(unsigned capacity) {
 	}
 }
 
+void Vektor::sort() {
+
+}
+
 int Vektor::operator[](unsigned index) {
 	assert(index < m_size);
 	assert(index >= 0);
@@ -81,18 +87,50 @@ int Vektor::operator[](unsigned index) {
 }
 
 int Vektor::front() {
-	assert(m_size != 0);
+	assert(m_size > 0);
 	return m_arr[0];
 }
 
 int Vektor::back() {
-	assert(m_size != 0);
+	assert(m_size > 0);
 	return m_arr[m_size - 1];
 }
 
 int* Vektor::data() {
 	return m_arr;
 }
+
+// Returns first instance of largest element in the vektor.
+int* Vektor::max_element() {
+	assert(m_size > 0);
+	int maxElement = m_arr[0];
+	int maxInd = 0;
+	for (unsigned i = 1; i < m_size; ++i) {
+		if (m_arr[i] > maxElement) {
+			maxElement = m_arr[i];
+			maxInd = i;
+		}
+	}
+	return &m_arr[maxInd];
+}
+
+int* Vektor::min_element() {
+	assert(m_size > 0);
+	int minElement = m_arr[0];
+	int minInd = 0;
+	for (unsigned i = 1; i < m_size; ++i) {
+		if (m_arr[i] > minElement) {
+			minElement = m_arr[i];
+			minInd = i;
+		}
+	}
+	return &m_arr[minInd];
+}
+
+
+
+
+
 
 
 

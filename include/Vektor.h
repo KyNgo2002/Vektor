@@ -25,12 +25,17 @@ public:
 	int pop_back();
 	void clear();
 	void reserve(unsigned capacity);
+	//void sort();
 
 	// Operators/Accessors
 	int operator[](unsigned index);
 	int front();
 	int back();
 	int* data();
+
+	// Searchers
+	int* max_element();
+	int* min_element();
 	
 };
 
