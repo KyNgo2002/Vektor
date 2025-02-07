@@ -12,20 +12,25 @@ public:
 	Vektor();
 	Vektor(unsigned size);
 	Vektor(unsigned size, unsigned defaultValue);
+	~Vektor();
 
 	// Helper functions
 	unsigned size();
 	unsigned capacity();
-	unsigned empty();
+	bool empty();
 	void print(char delimitter);
 
 	// Modifiers
 	unsigned push_back(int val);
 	int pop_back();
 	void clear();
+	void reserve(unsigned capacity);
 
-	// Operators
+	// Operators/Accessors
 	int operator[](unsigned index);
+	int front();
+	int back();
+	int* data();
 	
 };
 
