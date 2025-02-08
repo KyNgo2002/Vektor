@@ -26,6 +26,17 @@ Vektor::Vektor(int size, int defaultValue) : m_size(size), m_capacity(size * 2) 
 		m_arr[i] = defaultValue;
 }
 
+Vektor::Vektor(Vektor& other) {
+	this->m_size = other.size();
+	this->m_capacity = other.capacity();
+	this->m_arr = new int[m_capacity];
+	memset(m_arr, 0, m_capacity);
+
+	/*for (unsigned i = 0; i < m_size; ++i) 
+		this->m_arr[i] = other[i];*/
+	
+}
+
 Vektor::~Vektor() {
 	if (m_arr)
 		delete[] m_arr;

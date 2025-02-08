@@ -12,6 +12,7 @@ public:
 	Vektor();
 	Vektor(int size);
 	Vektor(int size, int defaultValue);
+	Vektor(Vektor& other);
 	~Vektor();
 
 	// Helper functions
