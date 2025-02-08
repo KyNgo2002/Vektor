@@ -30,10 +30,10 @@ Vektor::Vektor(Vektor& other) {
 	this->m_size = other.size();
 	this->m_capacity = other.capacity();
 	this->m_arr = new int[m_capacity];
-	memset(m_arr, 0, m_capacity);
+	memset(m_arr, 0, m_capacity * sizeof(int));
 
-	/*for (unsigned i = 0; i < m_size; ++i) 
-		this->m_arr[i] = other[i];*/
+	for (unsigned i = 0; i < m_size; ++i) 
+		this->m_arr[i] = other[i];
 	
 }
 
@@ -101,6 +101,14 @@ int Vektor::operator[](unsigned index) {
 	assert(index < m_size);
 	assert(index >= 0);
 	return m_arr[index];
+}
+
+bool Vektor::operator==(Vektor& vektor) {
+	if (m_size != vektor.size()) return false;
+	for (unsigned i = 0; i < m_size; ++i) 
+		if (m_arr[i] != vektor[i]) 
+			return false;
+	return true;
 }
 
 int Vektor::front() {

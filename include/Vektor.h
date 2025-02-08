@@ -28,8 +28,11 @@ public:
 	void reserve(unsigned capacity);
 	//void sort();
 
-	// Operators/Accessors
+	// Operators
 	int operator[](unsigned index);
+	bool operator==(Vektor& vektor);
+
+	// Accessors
 	int front();
 	int back();
 	int* data();
