@@ -12,12 +12,12 @@ public:
 	Vektor();
 	Vektor(int size);
 	Vektor(int size, int defaultValue);
-	Vektor(Vektor& other);
+	Vektor(const Vektor& other);
 	~Vektor();
 
 	// Helper functions
-	unsigned size();
-	unsigned capacity();
+	unsigned size() const;
+	unsigned capacity() const;
 	bool empty();
 	void print(char delimitter);
 
@@ -31,6 +31,7 @@ public:
 	// Operators
 	int operator[](unsigned index);
 	bool operator==(Vektor& vektor);
+	Vektor& operator=(Vektor& vektor);
 
 	// Accessors
 	int front();
