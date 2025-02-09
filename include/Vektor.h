@@ -13,7 +13,9 @@ public:
 	Vektor(int size);
 	Vektor(int size, int defaultValue);
 	Vektor(const Vektor& other);
-	~Vektor();
+	Vektor(Vektor&& other) noexcept;
+
+	~Vektor() noexcept;
 
 	// Helper functions
 	unsigned size() const;
@@ -32,6 +34,7 @@ public:
 	int operator[](unsigned index);
 	bool operator==(Vektor& vektor);
 	Vektor& operator=(Vektor& vektor);
+	Vektor& operator=(Vektor&& vektor) noexcept;
 
 	// Accessors
 	int front();
