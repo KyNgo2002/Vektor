@@ -133,7 +133,6 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="src\main.cpp" />
-    <ClCompile Include="src\Vektor.cpp" />
   </ItemGroup>
   <ItemGroup>
     <None Include=".gitignore" />
