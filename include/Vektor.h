@@ -2,7 +2,6 @@
 #include <cassert>
 #include <iostream>
 
-
 template <typename T>
 class Vektor {
 private:
@@ -21,8 +20,8 @@ public:
 	~Vektor() noexcept;
 
 	// Helper functions
-	unsigned size() const;
-	unsigned capacity() const;
+	inline unsigned size() const;
+	inline unsigned capacity() const;
 	bool empty();
 	void print(char delimitter = ' ');
 
